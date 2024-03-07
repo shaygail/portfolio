@@ -12,7 +12,7 @@ export default function About() {
   useEffect(() => {
     ScrollTrigger.create({
       trigger: aboutSection.current,
-      start: "top 400px",
+      start: "top 200px",
       animation: gsap
         .timeline()
         .to(
@@ -26,51 +26,95 @@ export default function About() {
           0.2
         ),
 
-      toggleActions: "play none none none",
+      toggleActions: "play pause resume pause",
     });
     ScrollTrigger.refresh();
+
   }, [aboutSection]);
 
   return (
-    // Try using max width to contain the size of the container
-    <section ref={aboutSection} aria-label="about me">
-      <Heading title="about me" />
+    <section
+            ref={aboutSection}
+            aria-label="about me"
+            className="flex flex-col items-center gap-20 bg-[#1E1E1E] p-10 text-white"
+        >
+            <div className="container flex flex-col items-start justify-center gap-8 md:flex-row lg:gap-10">
+                <div className="top-20 flex flex-col items-center gap-10 sm:sticky md:top-28 md:w-1/2 md:items-start lg:top-32">
+                    <Heading title="about me" />
 
+                    <div className="top-28 flex max-h-[400px] max-w-[300px] items-center justify-center overflow-hidden md:sticky md:hidden md:aspect-auto md:w-1/2">
+                        <img
+                            ref={profile}
+                            src="./assets/profile/sova.jpg"
+                            loading="lazy"
+                            alt="profile"
+                        />
+                    </div>
 
-      <div className="mt-10 flex flex-col items-start gap-8 md:flex-row lg:gap-10 ">
-        <div className="top-28 overflow-hidden rounded-md md:sticky md:w-1/2 ml:40">
-            <img
-                ref={profile}
-                src='./assets/profile/sova.jpg'
-                loading="lazy"
-                className="aspect-square rounded-md md:aspect-auto"
-                style={{ maxWidth: '300px', maxHeight: '500px',minWidth: 'auto', minHeight: 'auto' }} // Adjust the max-width and max-height as needed
-                alt="profile"
-            />
-        </div>
+                    <div className="w-auto space-y-4 2xl:space-y-10">
+                        <p
+                            ref={body}
+                            className=" text-body-1 translate-y-10 opacity-0 2xl:text-4xl"
+                        >
+                            I am an independent frontend developer, UI/UX
+                            designer and creator based in Palmerston North, New
+                            Zealand.
+                            <br></br>
+                            <br></br>I specialize in crafting elevated,
+                            intuitive, and minimalistic designs for startups and
+                            small businesses to help them stand out in the
+                            digital landscape with a powerful impact.
+                            <br></br>
+                            <br></br>
+                            When I am not designing, I work a IT Feild Support Engineer at DTSL
+                            
+                        </p>
+                    </div>
+                </div>
 
-        <div className="top-20 sm:sticky md:top-28 lg:top-32 md:w-1/2">
-          <div className="w-auto space-y-4 2xl:space-y-10">
-            <h3
-              ref={heading}
-              className="translate-y-10 text-heading-3 2xl:text-5xl md:text-left font-medium leading-tight opacity-0"
-            >
-              A brief intro, who am I?
-            </h3>
-            <p ref={body} className=" translate-y-10 text-body-1 2xl:text-4xl opacity-0">
-              I am an independent frontend developer, UI/UX designer and creator based in
-              Palmerston North, New Zealand.
-              <br></br>
-              <br></br>I specialize in crafting elevated, intuitive, and
-              minimalistic designs for startups and small businesses to help
-              them stand out in the digital landscape with a powerful impact. 
-              <br></br>
-              <br></br>
+                <div className="top-28 hidden max-h-[500px] max-w-[300px] overflow-hidden rounded-md md:sticky md:block md:w-1/2">
+                    <img
+                        ref={profile}
+                        src="./assets/profile/sova.jpg"
+                        loading="lazy"
+                        alt="profile"
+                    />
+                </div>
+            </div>
 
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div className="container grid grid-cols-1 gap-16 md:grid-cols-3">
+                <h2 className="col-span-full text-[#8C8C73] text-bold text-5xl">I can help you with</h2>
+                <div className="flex flex-col gap-5">
+                    <span className="h-10 border-b border-white">01</span>
+                    <h3 className="text-2xl">Design</h3>
+                    <p>
+                        With a solid track record in designing websites and
+                        apps, I deliver strong and user-friendly digital
+                        designs. Solid company branding is the foundation of any
+                        succesful website.
+                    </p>
+                </div>
+                <div className="flex flex-col gap-5">
+                    <span className="h-10 border-b border-white">02</span>
+                    <h3 className="text-2xl">Development</h3>
+                    <p>
+                        I build scalable websites from scratch that fit
+                        seamlessly with design. My focus is on micro animations,
+                        transitions and interaction. For content management I
+                        use Kirby CMS.
+                    </p>
+                </div>
+                <div className="flex flex-col gap-5">
+                    <span className="h-10 border-b border-white">03</span>
+                    <h3 className="text-2xl">The full package</h3>
+                    <p>
+                        A complete website from concept to implementation,
+                        that's what makes me stand out. My great sense for
+                        design and my development skills enable me to create
+                        kick-ass projects.
+                    </p>
+                </div>
+            </div>
+        </section>
   );
 }
