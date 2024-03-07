@@ -1,17 +1,15 @@
-
 "use client";
 
 import { useState, useEffect, useRef} from 'react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import PreLoader from '../homepage/ui/Preloader';
-import Cursor from '../homepage/ui/Cursor';
-import NavBar from '../homepage/ui/NavBar';
+import PreLoader from '../components/ui/Preloader';
+import Cursor from '../components/ui/Cursor';
 
-import Home from '../homepage/homepage/Home';
-import About from '../homepage/homepage/About';
-import Works from '../homepage/homepage/Works';
-import Contact from '../homepage/homepage/Contact';
+import Home from '../components/homepage/Home';
+import About from '../components/homepage/About';
+import Works from '../components/homepage/Works';
+import Contact from '../components/homepage/Contact';
 
 const IndexPage = () => {
   const [loading, setLoading] = useState(true);
@@ -61,17 +59,13 @@ const IndexPage = () => {
       ) : (
         <>
         <Cursor/>
-          <NavBar />
-          <div style={{ marginBottom: '0px' }}></div>
             <Home />
-            <div style={{ marginBottom: '0px' }}></div>
             <About />
-          <div style={{ marginTop: '40px' }}>
             <Works/>
-          </div>
-          <div style={{ marginTop: '0px' }}>
+            <div>
             <Contact/>
-          </div>
+            </div>
+            
         </>
       )}
     </div>
