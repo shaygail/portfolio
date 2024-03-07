@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState,useRef } from 'react';
+
 
 const anim = {
     initial: { width: 0 },
@@ -11,43 +12,36 @@ const projects = [
     {
         title1: "Duckett ",
         title2: "Architecture",
-        src: "ducket_archi.jpeg"
+        src: "Duckett_Archi.jpg"
+        
     },
     {
         title1: "Ride",
         title2: "Share",
         src: "ride_share.jpeg"
     },
-    {
-        title1: "sample",
-        title2: "proj",
-        src: "sample.jpeg"
-    },
-    {
-        title1: "Nothing",
-        title2: "Studio",
-        src: "nothing_studio.png"
-    },
-    {
-        title1: "sb",
-        title2: "sb",
-        src: "sb.jpeg"
-    }
+
 ];
 
 export default function Index() {
 
     const [isActive, setIsActive] = useState(false);
+    const selectedWorks = useRef(null);
 
     return (
-        <main className="main w-full h-600 ">
-            <div className="gallery w-full">
-                <p className="text-1xl font-regular mb-4 text-left">Featured Work</p>
-                {projects.map(project => (
-                    <Project key={project.title1} project={project} />
-                ))}
-            </div>
-        </main>
+        <section
+            ref={selectedWorks}
+        >
+            <main className="main w-full h-600">
+                <div className="gallery gap-50 w-full">
+                    <p className="pl-10 md:pl-80 text-1xl justify-center text-[#8C8C73] font-regular mt-10 mb-4 text-left">Selected Works</p>
+                    {projects.map(project => (
+                        <Project key={project.title1} project={project} />
+                    ))}
+                </div>
+            </main>
+        </section>
+        
     );
 }
 
@@ -56,13 +50,12 @@ function Project({ project }) {
     const [isActive, setIsActive] = useState(false); // Define isActive state here
 
     return (
-        <div onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)} className="border-t py-2 cursor-pointer w-full flex justify-left items-left">
-            <p className="text-5xl">{title1}</p>
+        <div onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)} className="border-t py-2 cursor-pointer w-full flex justify-center items-center">
+            <p className="2xl:text-7xl xl:text-7xl lg:text-6xl sm:text-6xl text-4xl">{title1}</p>
             <motion.div variants={anim} animate={isActive ? "open" : "closed"} className="overflow-hidden flex justify-center w-full">
                 <img src={`/medias/${src}`} className="w-40" alt={title2} />
             </motion.div>
-            <p className="text-5xl">{title2}</p>
+            <p className="2xl:text-7xl xl:text-7xl lg:text-6xl sm:text-6xl text-4xl">{title2}</p>
         </div>
     );
 }
-
