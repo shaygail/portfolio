@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const words = ["Hello", "Kamusta", "Shay Galiste 2024"];
+const words = ["Hello", "Kamusta", "Kia Ora", "Shay Galiste 2024"];
 
 export const opacity = {
     initial: {
